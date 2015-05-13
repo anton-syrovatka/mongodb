@@ -27,7 +27,7 @@ require 'mongo'
 require 'fileutils'
 
 if node['mongodb']['download']['use_custom_build']
-  node.set['mongodb']['download']['src'] = ['mongodb']['download']['build_url']
+  node.set['mongodb']['download']['src'] = node['mongodb']['download']['build_url']
 else
   node.set['mongodb']['download']['src'] = "http://#{node['mongodb']['download']['host']}/#{node['mongodb']['download']['subfolder']}mongodb-linux-#{node['kernel']['machine']}-#{node['mongodb']['download']['version']}.tgz"
 end
