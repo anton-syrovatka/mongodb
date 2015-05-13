@@ -25,6 +25,8 @@ default['mongodb']['download']['checksum'] = 'fd5c88a45e5ebffb44a932be5b96910930
 # don't change this, unless you're running your own download server
 default['mongodb']['download']['host'] = 'fastdl.mongodb.org'
 default['mongodb']['download']['subfolder'] = 'linux/'
+# use custom build from the cookbook repository
+default['mongodb']['download']['use_custom_build'] = false
 
 
 ################################################################################

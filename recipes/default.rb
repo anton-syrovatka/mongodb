@@ -26,7 +26,11 @@ end
 require 'mongo'
 require 'fileutils'
 
-node.set['mongodb']['download']['src'] = "http://#{node['mongodb']['download']['host']}/#{node['mongodb']['download']['subfolder']}mongodb-linux-#{node['kernel']['machine']}-#{node['mongodb']['download']['version']}.tgz"
+if node['mongodb']['download']['use_custom_build']
+  node.set['mongodb']['download']['src'] = ['mongodb']['download']['build_url']
+else
+  node.set['mongodb']['download']['src'] = "http://#{node['mongodb']['download']['host']}/#{node['mongodb']['download']['subfolder']}mongodb-linux-#{node['kernel']['machine']}-#{node['mongodb']['download']['version']}.tgz"
+end
 
 # Update TCP keepalive time
 sysctl_param "net.ipv4.tcp_keepalive_time" do
